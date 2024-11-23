@@ -1,0 +1,51 @@
+- ALFA: [Agostina Pietraroia]
+- BETA: [Santino Ramos Conti/Agostina Pietraroia]
+- GAMMA: [Santino Ramos Conti]
+
+---
+
+**A- ¿Qué color de fondo tiene su página en el TESTING?**
+El color de fondo en `TESTING` es **BLUE**, porque BETA cambió el fondo a BLUE en el paso 12.
+
+**B- ¿Qué color de fondo tiene su página en el DESARROLLO?**
+El color de fondo en `DESARROLLO` es **YELLOW**, porque ALFA lo cambió a YELLOW en el paso 13.
+
+**C- ¿Qué color de fondo tiene su página en el MASTER?**
+El color de fondo en el `MASTER` depende de cómo se resolvieron los conflictos durante los merges en los pasos 15 y 16:
+- Si GAMMA priorizó `TESTING`, el color será **BLUE**.
+- Si GAMMA priorizó `DESARROLLO`, el color será **YELLOW**.
+
+**D- ¿Qué favicon quedó en el MASTER el de ALFA o el de BETA?**
+El favicon dependerá de cómo se resolvieron los conflictos en el archivo `favicon.ico` durante los merges en los pasos 15 y 16:
+- Si GAMMA no resolvió manualmente, el último merge (desde `TESTING`) podría haber sobrescrito el de ALFA.
+- Si resolvió manualmente, podría haber combinado o seleccionado uno de los dos.
+
+---
+
+**E- ¿Algún integrante tuvo problemas al hacer el push?**
+Sí, es probable que uno o más integrantes hayan tenido problemas al hacer el `push` si:
+1. No actualizaron su repositorio local (`git pull`) antes de hacer cambios y un push.
+2. Hubo conflictos al realizar los merges debido a cambios simultáneos en los mismos archivos.
+
+**F- ¿Qué problemas surgieron?**
+1. **Conflictos de merge:** Cambios simultáneos en `index.html` (pasos 18, 19, 20) y en `estilo.css` generaron conflictos.
+2. **Push rechazado:** Si un integrante intentó hacer `push` sin antes realizar un `pull`, Git rechazará el push.
+3. **Perdida de cambios:** Si alguien usó `push -f`, podría haber sobrescrito los cambios de otros.
+
+**G- ¿Qué soluciones pueden aplicar y cuál sería la consecuencia de cada solución adoptada?**
+1. **Solución: Hacer `git pull` antes del push.**
+   - **Consecuencia:** Esto permite integrar los cambios remotos con los locales, minimizando conflictos.
+2. **Solución: Resolver los conflictos manualmente.**
+   - **Consecuencia:** Requiere editar los archivos en conflicto para combinar cambios de todos, lo que puede ser tedioso.
+3. **Solución: Usar `git stash` antes de hacer `pull`.**
+   - **Consecuencia:** Permite guardar cambios locales temporalmente, evitar conflictos y luego restaurarlos.
+
+**H- ¿Qué sucede si cada uno utiliza el push -f?**
+El comando `git push -f` fuerza el envío al remoto, sobrescribiendo cambios realizados por otros colaboradores:
+- **Consecuencia:** Puede causar pérdida de trabajo, ya que borra cambios en el remoto que no estén en el push forzado.
+- **Recomendación:** Nunca usar `push -f` en un repositorio compartido sin coordinación previa.
+
+**I- ¿Qué debo hacer para que el index.html tenga todos los `<p>` de los puntos 18, 19 y 20 en DESARROLLO?**
+1. Cambiar a la rama `TESTING`:
+   ```bash
+   git checkout TESTING
