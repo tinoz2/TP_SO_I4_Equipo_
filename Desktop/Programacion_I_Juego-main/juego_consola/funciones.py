@@ -51,7 +51,7 @@ def asignar_valores_elemento(diccionario: dict):
         valor_elemento = random.randint(20, 40)
     else:
         valor_elemento = random.randint(1, 15)
-    
+        
     diccionario["valor_elemento"] = valor_elemento
 
     return diccionario
